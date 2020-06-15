@@ -2,7 +2,7 @@ FROM node:lts-alpine
 
 RUN apk update \
  && apk upgrade \
- && apk add bash git yarn python3 curl \
+ && apk add make bash git yarn python3 curl \
  && rm -rf /var/cache/*/* \
  && echo "" > /root/.ash_history
 
