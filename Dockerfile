@@ -3,7 +3,7 @@ FROM node:lts-alpine
 # https://github.com/gliderlabs/docker-alpine/issues/24
 RUN apk update \
  && apk upgrade \
- && apk add alpine-sdk bash yarn python3 \
+ && apk add alpine-sdk bash yarn python3 python3-dev postgresql-dev \
  && rm -rf /var/cache/*/* \
  && echo "" > /root/.ash_history
 
