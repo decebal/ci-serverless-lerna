@@ -3,7 +3,7 @@ FROM node:lts-alpine
 # https://github.com/gliderlabs/docker-alpine/issues/24
 RUN apk update \
  && apk upgrade \
- && apk add alpine-sdk bash yarn python3 python3-dev postgresql-dev \
+ && apk add alpine-sdk bash yarn python3 python3-dev python-dev postgresql-dev \
  && rm -rf /var/cache/*/* \
  && echo "" > /root/.ash_history
 
@@ -37,6 +37,8 @@ RUN curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/
 ENV LC_ALL=en_US.UTF-8
 
 RUN yarn global add lerna
+
+RUN npm install -g @commitlint/cli @commitlint/config-conventional
 
 RUN ([ -f /usr/bin/sops ] || (wget -q -O /usr/bin/sops https://github.com/mozilla/sops/releases/download/v3.5.0/sops-v3.5.0.linux && chmod +x /usr/bin/sops))
 
